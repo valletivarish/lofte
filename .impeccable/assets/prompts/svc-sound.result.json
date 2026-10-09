@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-29T07:41:37.461739Z",
+    "display_name": "GPT Image 2.5",
+    "id": "71fbe35c-a00e-4030-a208-5a7a713310f0",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/hf_20260929_074137_71fbe35c-a00e-4030-a208-5a7a713310f0_min.webp",
+    "params": {
+      "aspect_ratio": "3:4",
+      "height": 1168,
+      "medias": [],
+      "model": "flare",
+      "prompt": "A large-diaphragm studio microphone with a pop filter in a small vocal booth lined with acoustic foam, a stool and closed-back headphones hanging nearby, one warm light strip glowing. Photorealistic editorial photograph, 35mm lens, shallow depth of field, subtle film grain, warm burnt-orange practical lighting (#C2410C to #FF7A1F) against deep shadow, no people, no faces, no hands, no logos, no brand names, no readable text anywhere: every screen, page and note is soft, out of focus or abstract so no words or letters can be read.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 880
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/hf_20260929_074137_71fbe35c-a00e-4030-a208-5a7a713310f0.png",
+    "status": "completed"
+  }
+]

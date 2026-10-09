@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+/* Tokens: orange / black / off-white (Pinterest pin, sampled), loftestudios.com's light-and-black rhythm. */
+@theme {
+  --color-paper: #ecf0f1;
+  --color-surface: #f7f9f9;
+  --color-ink: #121314;
+  --color-coal: #1a1a19;
+  --color-muted: #545b5f;
+  --color-muted-dark: #a8a49c;
+  --color-line: #cdd3d6;
+  --color-line-dark: #34322f;
+  --color-edge: #7a8286;
+  --color-signal: #fe7a1f;
+  --color-flare: #e8430f; /* display-size accent words on light (>= 3:1) */
+  --color-signal-ink: #a63f07;
+  --color-ember: #c2410c;
+  --color-ember-deep: #7a1e06;
+  --color-error: #b42318;
+  --color-ok: #1f6b3a;
+
+  --font-sans: var(--font-manrope), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-dm), "Helvetica Neue", Arial, sans-serif;
+
+  --text-display-xl: clamp(2.6rem, 0.4rem + 5.4vw, 6.2rem);
+  --text-display-l: clamp(2.2rem, 0.9rem + 3.8vw, 4.6rem);
+  --text-display-m: clamp(1.9rem, 1rem + 2.4vw, 3.3rem);
+  --text-title: clamp(1.25rem, 1.05rem + 0.5vw, 1.6rem);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-media: 1rem;
+  --radius-callout: 1rem;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    background: var(--color-paper);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { text-wrap: balance; hyphens: none; }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--color-signal); color: var(--color-ink); }
+  :focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; border-radius: 4px; }
+  .on-dark :focus-visible { outline-color: var(--color-signal); }
+  a { text-underline-offset: 0.2em; text-decoration-thickness: 1.5px; }
+  input, textarea, select, button { font: inherit; color: inherit; }
+  html { scrollbar-color: var(--color-edge) var(--color-paper); }
+}
+
+@layer components {
+  /* Display: DM Sans, mixed case, tracked tight. The hero alone sets it 800 in capitals. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+  .caps { text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+  .label { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+  .gutter { padding-inline: clamp(1rem, 3.4vw, 3rem); }
+  .measure { max-width: 64ch; }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------------- Hero: PixelCut composition ---------------- */
+.hero {
+  position: relative; min-height: max(46rem, 100svh); overflow: hidden; color: #fff; isolation: isolate;
+  /* The reference's textured orange field: bright centre, deep red-orange edges. */
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 58%, #f86a22 0%, #ec561a 40%, rgb(230 80 22 / 0) 75%),
+    radial-gradient(ellipse 95% 90% at 50% 42%, #e4521a 0%, #d24514 42%, #b2340d 72%, #8a260a 100%);
+}
+/* The editor photo is a focal object, feathered into the field (desktop). */
+.hero-photo { position: absolute; inset: 0; z-index: -1; }
+@media (min-width: 48rem) {
+  .hero-photo { inset: auto 0 0 50%; width: min(84vw, 150vh); aspect-ratio: 27 / 16; translate: -50% 4%; mask-image: radial-gradient(ellipse 58% 62% at 50% 58%, #000 52%, transparent 96%); }
+}
+.hero-grade {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgb(70 16 4 / 0.18) 0%, rgb(70 16 4 / 0) 18%, rgb(20 6 2 / 0) 76%, rgb(20 6 2 / 0.55) 100%);
+}
+@media (max-width: 47.99rem) {
+  .hero-grade { background: linear-gradient(180deg, rgb(58 14 3 / 0.7) 0%, rgb(58 14 3 / 0.25) 45%, rgb(20 6 2 / 0.4) 75%, rgb(20 6 2 / 0.85) 100%); }
+}
+.hero-grain {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.18; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.chip {
+  display: flex; align-items: center; gap: 0.85rem; padding: 0.75rem 1.2rem 0.75rem 0.95rem;
+  border: 1px solid rgb(255 255 255 / 0.38); border-radius: 1.4rem; background: rgb(90 22 4 / 0.3); backdrop-filter: blur(4px);
+  color: #fff; text-decoration: none;
+  transition: border-color 250ms var(--ease-out-expo), background-color 250ms var(--ease-out-expo);
+}
+/* Chips only hold one line when they sit on the photo (xl); in the small-screen grid they wrap inside their border. */
+@media (min-width: 80rem) { .chip { white-space: nowrap; } }
+.chip:hover { border-color: rgb(255 255 255 / 0.85); background: rgb(90 22 4 / 0.55); }
+.chip-dot { position: absolute; top: 50%; width: 11px; height: 11px; margin-top: -5.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgb(255 255 255 / 0.18); }
+.wave i { display: block; width: 2px; border-radius: 2px; background: rgb(255 150 110 / 0.75); transform-origin: 50% 50%; }
+@media (prefers-reduced-motion: no-preference) {
+  .wave i { animation: wave 1.6s ease-in-out infinite alternate; animation-delay: calc(var(--d) * -1s); }
+  @keyframes wave { from { transform: scaleY(0.35); } to { transform: scaleY(1); } }
+}
+
+/* Marquee */
+.marquee { display: flex; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.marquee-track { display: flex; flex: none; gap: 0.75rem; padding-right: 0.75rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track { animation: marquee var(--dur, 40s) linear infinite; }
+  .marquee[data-dir="rev"] .marquee-track { animation-direction: reverse; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { to { transform: translateX(-100%); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { flex-wrap: wrap; mask-image: none; }
+  .marquee-track[aria-hidden="true"] { display: none; }
+  .marquee-track { flex-wrap: wrap; }
+}
+
+.snap-row { scroll-snap-type: x mandatory; scrollbar-width: none; scroll-padding-inline: clamp(1rem, 3.4vw, 3rem); }
+.snap-row::-webkit-scrollbar { display: none; }
+.snap-row > * { scroll-snap-align: start; }
+
+/* Without motion the marquee rows wrap and the six-stage track is a grid; motion switches them on. */
+@media (prefers-reduced-motion: reduce) {
+  [data-marquee] { width: auto; flex-wrap: wrap; padding-inline: clamp(1rem, 3.4vw, 3rem); }
+  [data-marquee] > div { flex-wrap: wrap; }
+  [data-marquee] > div + div { display: none; }
+}
+@media (min-width: 64rem) {
+  [data-stages-track] { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: auto; }
+  [data-stages-track].is-track { display: flex; width: max-content; }
+  [data-stages-track].is-track > li { width: 27rem; }
+}
+
+/* Mobile menu: the panel wipes down, links rise out of their rows. */
+.menu-link { display: block; overflow: hidden; }
+.menu-link > span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes menu-in { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+  @keyframes menu-rise { from { transform: translateY(110%); } to { transform: none; } }
+  .menu-panel { animation: menu-in 0.6s var(--ease-out-expo) both; }
+  .menu-link > span { animation: menu-rise 0.8s var(--ease-out-expo) both; animation-delay: calc(0.15s + var(--i, 0) * 0.06s); }
+}
+
+/* Services panel: wipes open from the nav, rows rise in sequence. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes panel-in { from { clip-path: inset(0 0 100% 0 round 2rem); opacity: 0.4; } to { clip-path: inset(0 round 2rem); opacity: 1; } }
+  @keyframes row-in { from { transform: translateY(0.9rem); opacity: 0; } to { transform: none; opacity: 1; } }
+  .nav-panel:not([hidden]) { animation: panel-in 0.55s var(--ease-out-expo) both; }
+  .nav-panel:not([hidden]) .nav-row { animation: row-in 0.6s var(--ease-out-expo) both; animation-delay: calc(0.08s + var(--i, 0) * 0.04s); }
+}
+
+/* Capability rows: the photo sits closed in the middle column and opens, tilted, on hover or focus. */
+.caprow-photo { clip-path: inset(50% 50% 50% 50% round 1rem); rotate: -6deg; scale: 0.9; transition: clip-path 0.7s var(--ease-out-expo), rotate 0.7s var(--ease-out-expo), scale 0.7s var(--ease-out-expo); }
+.group:hover .caprow-photo, .group:focus-visible .caprow-photo { clip-path: inset(0 round 1rem); rotate: -3deg; scale: 1; }
+@media (prefers-reduced-motion: reduce) { .caprow-photo { transition: none; } }
+
+/* Nav letters roll: each glyph carries a copy of itself one line below (text-shadow) and slides up on hover. */
+.roll { display: inline-flex; overflow: hidden; line-height: 1.2; height: 1.2em; }
+.roll > span { display: inline-block; text-shadow: 0 1.2em currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+  .roll > span { transition: translate 0.5s var(--ease-out-expo); transition-delay: calc(var(--d, 0) * 18ms); }
+  .group\/roll:hover .roll > span, .group\/roll:focus-visible .roll > span, [aria-expanded="true"] .roll > span { translate: 0 -1.2em; }
+}
+
+/* Ember field for the mid-page orange section. Darker than the hero centre so white text holds AA (>= 4.5:1). */
+.ember {
+  background:
+    radial-gradient(ellipse 70% 80% at 25% 30%, #c8461a 0%, rgb(200 70 26 / 0) 70%),
+    radial-gradient(ellipse 100% 100% at 60% 60%, #b8390f 0%, #9a2c0b 55%, #6e1c06 100%);
+}
+
+/* Testimonials countdown: the active segment fills over 6 s; reduced motion shows it full and never advances. */
+.testimonial-timer { transform: scaleX(1); }
+.testimonial-toggle { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes timer-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .testimonial-timer { animation: timer-fill 6s linear both; }
+  .testimonial-toggle { display: grid; }
+}
+

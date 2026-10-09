@@ -1,0 +1,11 @@
+# Internal working files: design reviews, archive, notes. Not needed to build or serve the site.
+.impeccable
+.old
+.remember
+.next
+node_modules
+docs
+scripts
+PRODUCT.md
+tsconfig.tsbuildinfo
+.env*

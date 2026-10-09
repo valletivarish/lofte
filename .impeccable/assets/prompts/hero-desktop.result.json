@@ -1,0 +1,32 @@
+[
+  {
+    "created_at": "2026-09-29T07:41:41.213608Z",
+    "display_name": "GPT Image 2.5",
+    "id": "f8841fd6-37fc-4a6e-98b8-a82e6990ffc0",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/hf_20260929_074141_f8841fd6-37fc-4a6e-98b8-a82e6990ffc0_min.webp",
+    "params": {
+      "aspect_ratio": "27:16",
+      "height": 1536,
+      "medias": [
+        {
+          "data": {
+            "id": "483da56c-7574-42f1-89b3-aa671e3d1be5",
+            "type": "media_input",
+            "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/483da56c-7574-42f1-89b3-aa671e3d1be5_resize.jpg"
+          },
+          "role": "image"
+        }
+      ],
+      "model": "flare",
+      "prompt": "Recreate the photograph in the reference image as a clean full-bleed photo with nothing overlaid: remove all website navigation, headline text, buttons, labels, callout boxes, leader lines, dots and the bottom bar. Keep the same camera angle, composition and object placement: a wide monitor on the left showing a colourful video edit timeline with a dusk city skyline in its preview, a second monitor on the right showing a subtitle editor as soft abstract rows, a broadcast microphone on a boom arm at right, closed-back headphones on the desk, an open spiral notebook at lower left, a printed colour swatch sheet at lower centre, a wall planner with index cards on the right wall, pinned photo prints on the left wall, plants and a small lamp. The top third of the frame is a darker, quiet wall so white headline text can sit over it. The notebook, planner cards and screens carry no readable words. Photorealistic editorial photograph, 35mm lens, shallow depth of field, subtle film grain, warm burnt-orange practical lighting (#C2410C to #FF7A1F) against deep shadow, no people, no faces, no hands, no logos, no brand names, no readable text anywhere: every screen, page and note is soft, out of focus or abstract so no words or letters can be read.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "2k",
+      "width": 2592
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/hf_20260929_074141_f8841fd6-37fc-4a6e-98b8-a82e6990ffc0.png",
+    "status": "completed"
+  }
+]

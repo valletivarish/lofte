@@ -1,0 +1,15 @@
+{
+ "h3.top_wall": "#2F1108",
+ "h3.mid_wall": "#CCC0BC",
+ "h3.chip_fill": "#4D1600",
+ "h3.bottom_bar": "#181817",
+ "h3.pill": "#A3A3A3",
+ "sections.ground": "#EAEEF0",
+ "s3.ground": "#ECF0F1",
+ "s3.orange_line": "#ECF0F1",
+ "s4.orange_tag": "#F1C4A3",
+ "s5.orange_square": "#FE791E",
+ "s6.orange_center": "#F4701F",
+ "s6.orange_edge": "#89280B",
+ "s6.footer_ground": "#E9ECEF"
+}

@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const [url, out, w, h, full, motion] = process.argv.slice(2);
+const b = await chromium.launch({ executablePath: process.env.CH });
+const ctx = await b.newContext({ viewport: { width: +w, height: +h }, deviceScaleFactor: +w < 600 ? 2 : 1, reducedMotion: motion === 'motion' ? 'no-preference' : 'reduce' });
+const p = await ctx.newPage();
+const errs = []; p.on('console', m => { if (m.type() === 'error') errs.push(m.text()); }); p.on('pageerror', e => errs.push(e.message));
+await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(1200);
+const over = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+await p.screenshot({ path: out, fullPage: full === 'full' });
+console.log(out, 'hOverflow', over, errs.length ? 'ERRORS: ' + errs.slice(0, 5).join(' | ') : 'no console errors');
+await b.close();

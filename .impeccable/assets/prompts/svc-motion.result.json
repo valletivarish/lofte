@@ -1,0 +1,23 @@
+[
+  {
+    "created_at": "2026-09-29T07:41:37.226449Z",
+    "display_name": "GPT Image 2.5",
+    "id": "7aea4457-02a4-4fce-abfb-3c4170dd6612",
+    "job_type": "gpt_image_2_5",
+    "min_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/hf_20260929_074137_7aea4457-02a4-4fce-abfb-3c4170dd6612_min.webp",
+    "params": {
+      "aspect_ratio": "3:4",
+      "height": 1168,
+      "medias": [],
+      "model": "flare",
+      "prompt": "A video edit monitor on a desk in a dark room: the preview window shows a mountain landscape at golden hour, below it a colourful multi-track timeline, a coffee mug beside the monitor. Interface text is soft and unreadable. Photorealistic editorial photograph, 35mm lens, shallow depth of field, subtle film grain, warm burnt-orange practical lighting (#C2410C to #FF7A1F) against deep shadow, no people, no faces, no hands, no logos, no brand names, no readable text anywhere: every screen, page and note is soft, out of focus or abstract so no words or letters can be read.",
+      "quality": "high",
+      "reference_elements": [],
+      "remove_bg": false,
+      "resolution": "1k",
+      "width": 880
+    },
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3E8GEzb9Gb1tBF9vTLt6oMYpig7/hf_20260929_074137_7aea4457-02a4-4fce-abfb-3c4170dd6612.png",
+    "status": "completed"
+  }
+]
